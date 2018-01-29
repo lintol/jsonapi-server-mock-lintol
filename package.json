@@ -1,0 +1,25 @@
+{
+  "name": "jsonapi-server-mock-lintol",
+  "version": "4.1.2",
+  "description": "A json:api Lintol mock API, based on jsonapi-server example",
+  "keywords": [
+    "lintol",
+    "validation",
+    "mock"
+  ],
+  "author": "Oliver Rumbelow",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lintol/jsonapi-server-mock-lintol"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "jsonapi-server": "4.1.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
