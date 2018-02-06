@@ -28,13 +28,17 @@ jsonApi.define({
     qualityScore: jsonApi.Joi.number().default(0)
       .description('Number of views for this article'),
     passes: jsonApi.Joi.number().default(0)
-      .description('Number of views for this article')
+      .description('Number of info/passing comments'),
+    createdAt: jsonApi.Joi.date().iso()
+      .description('When the report was created')
+      .example('2018-01-05 12:42:01')
   },
   examples: [
     {
       type: 'reports',
       dataResource: { type: 'dataResources', id: 'df66f95e-3f8b-45b7-8969-87b2aef79fa7' },
       profile: { type: 'profiles', id: '625dc900-cead-48e9-b5a1-0c431541e2c4' },
+      createdAt: '2018-01-05 12:42:01',
       content: {
         'time': 0.083,
         'valid': true,
@@ -72,6 +76,7 @@ jsonApi.define({
       qualityScore: 0,
       name: 'bad.csv report',
       passes: 0,
+      createdAt: '2018-01-05 12:42:01',
       content: {
         'time': 0.083,
         'valid': true,
