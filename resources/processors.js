@@ -2,6 +2,7 @@
 
 const jsonApi = require('jsonapi-server')
 const processorHandler = require('../handlers/processorHandler.js')
+const vueFormGenerator = require('vue-form-generator')
 
 jsonApi.define({
   namespace: 'json:api',
@@ -26,7 +27,9 @@ jsonApi.define({
       .example('Learning how to use JSON:API'),
     name: jsonApi.Joi.string().required()
       .description('The articles title, should be between 8 and 15 words')
-      .example('Learning how to use JSON:API')
+      .example('Learning how to use JSON:API'),
+    configurationOptions: jsonApi.Joi.string(),
+    configurationDefaults: jsonApi.Joi.string()
   },
   examples: [
     {
@@ -36,7 +39,57 @@ jsonApi.define({
       creatorId: null,
       description: 'ODI tool to processes tabular data',
       uniqueTag: 'theodi/csvlint.rb:1',
-      name: 'CSV Checking by CSVLint'
+      name: 'CSV Checking by CSVLint',
+      configurationDefaults: JSON.stringify({
+        id: 1,
+        name: "John Doe",
+        password: "J0hnD03!x4",
+        skills: ["Javascript", "VueJS"],
+        email: "john.doe@gmail.com",
+        status: true
+      }),
+      configurationOptions: JSON.stringify({
+        fields: [{
+          type: "input",
+          inputType: "text",
+          label: "ID (disabled text field)",
+          model: "id",
+          readonly: true,
+          disabled: true
+        },{
+          type: "input",
+          inputType: "text",
+          label: "Name",
+          model: "name",
+          placeholder: "Your name",
+          featured: true,
+          required: true
+        },{
+          type: "input",
+          inputType: "password",
+          label: "Password",
+          model: "password",
+          min: 6,
+          required: true,
+          hint: "Minimum 6 characters"
+        },{
+          type: "select",
+          label: "Skills",
+          model: "skills",      
+          values: ["Javascript", "VueJS", "CSS3", "HTML5"]
+        },{
+          type: "input",
+          inputType: "email",
+          label: "E-mail",
+          model: "email",
+          placeholder: "User's e-mail address"
+        },{
+          type: "checkbox",
+          label: "Status",
+          model: "status",
+          default: true
+        }]
+      })
     },
     {
       id: '5dcbb803-01ed-4641-b4cd-b085d2099a38',
@@ -63,7 +116,23 @@ jsonApi.define({
       description: 'GeoJSON boundary checker to make sure data is within given boundaries',
       module: 'boundary_checker',
       type: 'processors',
-      id: '80013cbd-15f6-48a8-806b-1532f9064394'
+      id: '80013cbd-15f6-48a8-806b-1532f9064394',
+      configurationDefaults: JSON.stringify({
+        boundary: 'bg-ni-fo'
+      }),
+      configurationOptions: JSON.stringify({
+        fields: [{
+          type: 'select',
+          label: 'Boundary',
+          model: 'boundary',
+          required: true,
+          values: [
+            { id: 'gb-ni', name: 'Northern Ireland' },
+            { id: 'gb-ni-city-belfast', name: 'Belfast'  },
+            { id: 'bg-ni-fo', name: 'Fermanagh & Omagh' }
+          ]
+        }]
+      })
     },
     {
       type: 'processors',
