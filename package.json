@@ -17,7 +17,8 @@
     "node": ">=6"
   },
   "dependencies": {
-    "jsonapi-server": "4.1.2"
+    "jsonapi-server": "4.1.2",
+    "vue-form-generator": "^2.2.0"
   },
   "scripts": {
     "start": "node server.js"
