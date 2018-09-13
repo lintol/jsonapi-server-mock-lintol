@@ -28,7 +28,11 @@ jsonApi.define({
       .description('The articles title, should be between 8 and 15 words')
       .example('Learning how to use JSON:API'),
     configurations: jsonApi.Joi.many('processorConfigurations')
-      .description('All of the tags associated with an article')
+      .description('All of the tags associated with an article'),
+    created_at: jsonApi.Joi.object().required() 
+      .description('Date object of when profile was created.'),
+    updated_at: jsonApi.Joi.object().required()
+      .description('Date object of when profile was updated.')
   },
   examples: [
     {
@@ -38,7 +42,13 @@ jsonApi.define({
       description: 'Testing',
       creatorId: null,
       uniqueTag: 'uniq-66-Testing',
-      name: 'Testing'
+      name: 'Testing',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       id: 'af940fa3-d2f4-4fac-ba54-86c9b39dda46',
@@ -47,7 +57,13 @@ jsonApi.define({
       version: '7',
       description: 'Profile',
       uniqueTag: 'uniq-66-undefined',
-      creatorId: null
+      creatorId: null,
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       name: 'A',
@@ -56,7 +72,13 @@ jsonApi.define({
       creatorId: null,
       uniqueTag: 'uniq-66-undefined',
       type: 'profiles',
-      id: '1ed078a1-ddc7-430e-b643-9c95eb1115ac'
+      id: '1ed078a1-ddc7-430e-b643-9c95eb1115ac',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       type: 'profiles',
@@ -68,7 +90,13 @@ jsonApi.define({
       name: 'Test Goodtables',
       configurations: [
         { type: 'processorConfigurations', id: '7e6a11b5-d9c4-474b-a8b8-bb1c51874695' }
-      ]
+      ],
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       id: 'a51609b3-d24a-4132-b7b8-e252d8e1dd7d',
@@ -77,7 +105,13 @@ jsonApi.define({
       creatorId: null,
       uniqueTag: 'uniq-66-undefined',
       description: 'Check Crime is valid.',
-      version: '7'
+      version: '7',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     }
   ]
 })

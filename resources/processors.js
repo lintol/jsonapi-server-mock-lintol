@@ -29,7 +29,11 @@ jsonApi.define({
       .description('The articles title, should be between 8 and 15 words')
       .example('Learning how to use JSON:API'),
     configurationOptions: jsonApi.Joi.string(),
-    configurationDefaults: jsonApi.Joi.string()
+    configurationDefaults: jsonApi.Joi.string(),
+    created_at: jsonApi.Joi.object().required() 
+      .description('Date object of when profile was created.'),
+    updated_at: jsonApi.Joi.object().required()
+      .description('Date object of when profile was updated.')
   },
   examples: [
     {
@@ -40,6 +44,12 @@ jsonApi.define({
       description: 'ODI tool to processes tabular data',
       uniqueTag: 'theodi/csvlint.rb:1',
       name: 'CSV Checking by CSVLint',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      },
       configurationDefaults: JSON.stringify({
         id: 1,
         name: "John Doe",
@@ -98,7 +108,13 @@ jsonApi.define({
       creatorId: null,
       module: 'good',
       name: 'CSV Checking by GoodTables',
-      uniqueTag: 'frictionlessdata/goodtables-py:1'
+      uniqueTag: 'frictionlessdata/goodtables-py:1',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       uniqueTag: 'lintol/ds-pii:1',
@@ -107,7 +123,13 @@ jsonApi.define({
       creatorId: null,
       description: 'Tool for searching for Personally-Identifiable Information within CSV data',
       id: 'c3f939f7-72bb-409e-929c-695681607350',
-      type: 'processors'
+      type: 'processors',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     },
     {
       name: 'Boundary Checker',
@@ -117,6 +139,12 @@ jsonApi.define({
       module: 'boundary_checker',
       type: 'processors',
       id: '80013cbd-15f6-48a8-806b-1532f9064394',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      },
       configurationDefaults: JSON.stringify({
         boundary: 'bg-ni-fo'
       }),
@@ -141,7 +169,13 @@ jsonApi.define({
       description: 'Check that CSV data about countries matches gov.uk register entries',
       module: 'registers',
       name: 'gov.uk Register Checker - Countries',
-      uniqueTag: 'lintol/ds-checker-py'
+      uniqueTag: 'lintol/ds-checker-py',
+      created_at: {
+        date: '2018-03-18'
+      },
+      updated_at: {
+        date: '2018-03-20'
+      }
     }
   ]
 })
