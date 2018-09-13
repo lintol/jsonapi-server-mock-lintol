@@ -31,7 +31,9 @@ jsonApi.define({
       .description('Number of info/passing comments'),
     createdAt: jsonApi.Joi.date().iso()
       .description('When the report was created')
-      .example('2018-01-05 12:42:01')
+      .example('2018-01-05 12:42:01'),
+    user: jsonApi.Joi.object().required() 
+      .description('user that started the report.'),
   },
   examples: [
     {
@@ -39,6 +41,9 @@ jsonApi.define({
       dataResource: { type: 'dataResources', id: 'df66f95e-3f8b-45b7-8969-87b2aef79fa7' },
       profile: { type: 'profiles', id: '625dc900-cead-48e9-b5a1-0c431541e2c4' },
       createdAt: '2018-01-05 12:42:01',
+      user: {
+        name: 'John'
+      },
       content: {
         'time': 0.083,
         'valid': true,
@@ -75,6 +80,9 @@ jsonApi.define({
       warnings: 0,
       qualityScore: 0,
       name: 'bad.csv report',
+      user: {
+        name: 'Mike'
+      },
       passes: 0,
       createdAt: '2018-01-05 12:42:01',
       content: {
